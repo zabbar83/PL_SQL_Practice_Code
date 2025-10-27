@@ -1,0 +1,12 @@
+set  serveroutput on;
+declare
+    CURSOR cur_abcd is
+    select emp_name from emp_info
+    where emp_id < 3;
+begin
+    for L_IDX in cur_abcd
+    loop
+    dbms_output.put_line(L_IDX.emp_name);
+    end loop;
+end;
+/

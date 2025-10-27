@@ -1,0 +1,12 @@
+SET SERVEROUTPUT ON;
+DECLARE
+    nope boolean:=TRUE;
+    v_date DATE := TO_DATE('&input_date','DD-MON-YY');
+BEGIN
+    WHILE nope LOOP
+        DBMS_OUTPUT.PUT_LINE(v_date);
+        if v_date = last_day(TO_DATE(v_date,'DD-MON-YY')) then nope :=FALSE;
+        end if;
+    v_date := v_date +1;
+    END LOOP;
+END;

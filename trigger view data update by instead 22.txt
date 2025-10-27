@@ -1,0 +1,8 @@
+create or replace trigger v_tr_sub_insert
+instead of insert on v_trainer_sub
+for each row
+begin
+   insert into trainer (full_name) values(:new.full_name);
+    insert into subject (sub_name) values(:new.sub_name);
+end;
+/

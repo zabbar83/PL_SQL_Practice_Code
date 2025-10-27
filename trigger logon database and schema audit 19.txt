@@ -1,0 +1,18 @@
+create or replace trigger logon_audit
+after logon on schema
+begin
+    insert into log_onoff_db values(
+    ora_sysevent,
+    sysdate,
+    to_char(sysdate,'HH24:MI:SS'),
+    NULL,
+    NULL
+    );
+commit;
+end;
+/
+
+SELECT * FROM log_onoff_db;
+
+disc;
+conn cocacola / zz1234

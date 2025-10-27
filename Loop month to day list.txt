@@ -1,0 +1,55 @@
+set serveroutput on;
+declare
+    v_date date :=to_date('01-AUG-25','DD-MON-YY');
+    v_date_list date;
+begin
+    while v_date <= to_date('31-AUG-25','DD-MON-YY') loop
+    v_date_list :=v_date;
+    dbms_output.put_line(v_date_list);
+    v_date :=v_date+1;
+    end loop;
+end;
+/
+
+set SERVEROUTPUT on;
+declare
+    v_date date :=to_date('01-AUG-25','DD-MON-YY');
+    v_date_list date;
+begin
+    while v_date <= last_day(to_date('01-AUG-25','DD-MON-YY'))  loop
+    v_date_list :=v_date;
+    dbms_output.put_line(v_date_list);
+    if v_date <= last_day(to_date('01-AUG-25','DD-MON-YY'))
+    then v_date:=v_date+1;
+    end if;
+    end loop;
+end;
+/
+
+set SERVEROUTPUT on;
+declare
+    nope boolean :=TRUE;
+    v_date_list date :=to_date('01-AUG-25','DD-MON-YY');
+begin
+    while nope  loop
+    v_date_list :=v_date_list+1;
+    dbms_output.put_line(v_date_list);
+    if v_date_list = last_day(to_date('01-AUG-25','DD-MON-YY'))
+    then nope :=FALSE;
+    end if;
+    end loop;
+end;
+/
+
+set serveroutput on;
+declare
+    v_start_date date := to_date('01-AUG-25','DD-MON-YY');
+    v_end_date   date := to_date('31-AUG-25','DD-MON-YY');
+    v_date       date;
+begin
+    for i in 0 .. v_end_date - v_start_date loop
+        v_date := v_start_date + i;
+        dbms_output.put_line(to_char(v_date, 'DD-MON-YYYY'));
+    end loop;
+end;
+/

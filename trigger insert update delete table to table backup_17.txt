@@ -1,0 +1,21 @@
+create or replace trigger heros_iud
+before insert or update or delete on heros
+for each row
+enable
+declare
+v_user varchar2(15);
+v_date TIMESTAMP (6);
+begin
+        select user,to_char(sysdate,'DD-MON-YY HH:MI:SS AM') into v_user,v_date from dual;
+    IF inserting then
+    insert into heros_backup (NEW_NAME,OLD_NAME,CHANGE_DATE_TIME,OPERATION,USER_NAME)
+    values(:new.name,null,v_date,'Insert',v_user);
+    elsif updating then
+    insert into heros_backup (NEW_NAME,OLD_NAME,CHANGE_DATE_TIME,OPERATION,USER_NAME)
+    values(:new.name,:old.name,v_date,'update',v_user);
+    elsif deleting then
+    insert into heros_backup (NEW_NAME,OLD_NAME,CHANGE_DATE_TIME,OPERATION,USER_NAME)
+    values(null,:old.name,v_date,'delete',v_user);
+    end if;
+end;
+

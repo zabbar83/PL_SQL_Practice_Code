@@ -1,0 +1,9 @@
+two types of cursor
+1.simplicit
+	*auto declared
+2.explicit
+	*declare
+	*open
+	*fetch
+	*close
+

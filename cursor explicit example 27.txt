@@ -1,0 +1,16 @@
+set serveroutput on;
+declare
+v_name varchar2(20);
+cursor cur_practice is
+select emp_name from emp_info
+where emp_id >3;
+begin
+    open cur_practice;
+    loop
+    fetch cur_practice into v_name;
+    dbms_output.put_line (v_name);
+    exit when cur_practice%notfound;
+    end loop;
+    close cur_practice;
+end;
+/

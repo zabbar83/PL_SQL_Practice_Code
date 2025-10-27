@@ -1,0 +1,12 @@
+set serveroutput on;
+declare
+    cursor cur_result (v_id number) is
+    select emp_id,emp_name from emp_info
+    where emp_id < v_id;
+begin
+    for l_value in cur_result(4)
+    loop
+    dbms_output.put_line(l_value.emp_id || ' ' || l_value.emp_name);
+    end loop;
+end;
+/

@@ -1,0 +1,12 @@
+
+set serveroutput on;
+declare
+    v_emp emp_info%rowtype;
+    v_back emp_info_backup%rowtype;
+begin
+    select e.emp_id,e.emp_name,eb.user_id into v_emp.emp_id,v_emp.emp_name,v_back.user_id from emp_info e join emp_info_backup eb on e.emp_id=eb.emp_id
+    where e.emp_id=2;
+    dbms_output.put_line (v_emp.emp_id || ' ' || v_emp.emp_name);
+    dbms_output.put_line (v_back.user_id);
+end;
+/

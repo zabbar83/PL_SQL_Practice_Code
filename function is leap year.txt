@@ -1,0 +1,10 @@
+create or replace function check_leap_year(targetMonth in varchar2)
+return number as
+    l_return number;
+begin
+    for i in(select case when to_number(to_char(last_day(to_date(targetMonth,'MON-YY')),'DD'))=29 then '1' else '0' end is_leap_year
+from dual) loop
+l_return :=i.is_leap_year;
+end loop;
+return l_return;
+end;

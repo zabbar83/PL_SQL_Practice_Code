@@ -1,0 +1,9 @@
+declare
+v_count number;
+begin
+    for v_count in 1 .. 100 loop
+    if mod(v_count,2)!=0 then
+    dbms_output.put_line(v_count);
+    end if;
+    end loop;
+end;

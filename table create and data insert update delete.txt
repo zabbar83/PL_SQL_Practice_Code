@@ -1,0 +1,12 @@
+create table heros_backup
+(
+    new_name varchar2(20),
+    old_name varchar2(20),
+    change_date_time timestamp(6),
+    operation varchar2(20),
+    user_name varchar2(15)
+);
+
+insert into heros values('superman');
+update heros set name='batman' where name='spiderman';
+delete from  heros where name='batman';

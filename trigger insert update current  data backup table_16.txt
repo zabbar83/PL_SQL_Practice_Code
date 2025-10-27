@@ -1,0 +1,13 @@
+set serveroutput on;
+create or replace trigger bill_backup_data
+before insert or update on bill
+for each row
+enable
+begin
+    IF inserting then
+    insert into bill_backup (ID,ADD_DATE,BILL_NAME,BILL_AMOUNT,BRUSER)
+    values(:new.ID,:new.ADD_DATE,:new.BILL_NAME,:new.BILL_AMOUNT,:new.BRUSER);
+    elsif updating then
+    update bill_backup set id=:old.id,add_date=:old.add_date,bill_name=:new.bill_name,bill_amount=:new.bill_amount,bruser=:old.bruser where id=:old.id;
+    end if;
+end;

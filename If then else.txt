@@ -1,0 +1,12 @@
+set serveroutput on;
+declare 
+        num1 number := &input_number;
+begin 
+        IF MOD(num1,2)=0 then
+        dbms_output.put_line(num1 || ' is even');
+        else 
+        dbms_output.put_line(num1 || ' is odd');
+        end IF;
+        dbms_output.put_line('condition is over');
+end
+;

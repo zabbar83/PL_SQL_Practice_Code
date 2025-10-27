@@ -1,0 +1,16 @@
+create or replace trigger Heros_backup
+before insert or update or delete on heros
+for each row
+enable
+declare
+user_name varchar2(20);
+begin
+    select user into user_name from dual;
+    if inserting then
+    dbms_output.put_line('One row inserted by ' || user_name);
+    elsif updating then
+    dbms_output.put_line('One row updated by ' || user_name);
+    elsif deleting then
+    dbms_output.put_line('One row deleted by ' || user_name);
+    end if;
+end;

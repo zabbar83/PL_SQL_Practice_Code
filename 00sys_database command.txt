@@ -1,0 +1,3 @@
+select utl_inaddr.get_host_name from dual;
+select sys_context('userenv','ip_address') from dual;
+select sys_context('USERENV','SERVER_HOST') from dual;

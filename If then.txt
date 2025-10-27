@@ -1,0 +1,11 @@
+set serveroutput on;
+declare 
+num1 number:=9;
+
+begin
+    IF num1 > 5 then
+    dbms_output.put_line('true');
+    end if;
+    dbms_output.put_line('false');
+
+end;

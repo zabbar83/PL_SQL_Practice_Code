@@ -1,0 +1,18 @@
+declare 
+        searching varchar2(30):='&Your_choice';
+begin
+        IF searching in ('Touhid','Mahfuz','Bappy') then
+        dbms_output.put_line(searching || ' is Senior Dev');
+        elsif searching in ('Touhid','Himel') then
+        dbms_output.put_line(searching || ' is Senior DBA');
+         elsif searching in ('Aminul','Ashraful') then
+        dbms_output.put_line(searching || ' is Tester');
+        elsif searching in ('Akter') then
+        dbms_output.put_line(searching || ' is CEO');
+        elsif searching in ('Ariful','Nazmul') then
+        dbms_output.put_line(searching || ' is Senior Support Engineer');
+        else dbms_output.put_line(searching || ' is Mango_public');
+        end If;
+        dbms_output.put_line('Thank you');
+end;
+

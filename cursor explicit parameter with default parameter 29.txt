@@ -1,0 +1,17 @@
+set serveroutput on;
+declare
+    v_name varchar2 (20);
+    v_id varchar2(3);
+    cursor v_value (var_id varchar2 :=3)is
+    select emp_name,emp_id from emp_info
+    where emp_id > var_id;
+begin
+    open v_value(2);
+    loop
+    fetch v_value into v_name,v_id;
+    dbms_output.put_line(v_name ||'-'|| v_id);
+    exit when v_value%notfound;
+    end loop;
+    close v_value;
+end;
+/  

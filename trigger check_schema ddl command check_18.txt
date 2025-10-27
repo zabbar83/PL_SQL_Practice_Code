@@ -1,0 +1,14 @@
+create or replace trigger tr_ddl_audit
+after ddl on schema
+begin
+        insert into ddl_audit (DDL_DATE,DDL_USER,OBJECT_CREATED,OBJECT_NAME,DDL_OPERATION)
+        values(
+        sysdate,
+        sys_context('userevn','current_user'), --(select user from dual),
+        ora_dict_obj_type,
+        ora_dict_obj_name,
+        ora_sysevent
+        );
+
+end;
+/

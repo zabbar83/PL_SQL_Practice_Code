@@ -1,0 +1,16 @@
+SET SERVEROUTPUT ON;
+declare
+    v_name varchar(20);
+    cursor p_value (v_emp_id varchar2) is
+    select emp_name from emp_info
+    where emp_id < v_emp_id;
+begin
+    open p_value(3);
+    loop
+    fetch p_value into v_name;
+    dbms_output.put_line(v_name);
+    exit when p_value%notfound;
+    end loop;
+    close p_value;
+end;
+/
